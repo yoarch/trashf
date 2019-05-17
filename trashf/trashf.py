@@ -69,7 +69,7 @@ def path_exists(path):
     return True
 
 
-def get_abs_path(fs):
+def get_abs_paths(fs):
     abs_fpaths = list()
     for f in fs:
         abs_fpaths.append(os.path.normpath((os.path.join(os.getcwd(), os.path.expanduser(f)))))
@@ -84,7 +84,7 @@ def get_fname(fpath):
 def error_man(init_msg, err_msg, fpath, fpath_in_trash):
     ERROR(init_msg + " error:\n\t\t" + str(err_msg))
 
-    sudo_conf = input(CBWHITE + "\n\t\tuse sudo?\n\t\t\t[Enter] to proceed\t\t\t[any case] to skip\n")
+    sudo_conf = input(CBWHITE + "\n\t\tuse sudo?\n\t\t\t[Enter] to proceed\t\t[any case] to skip\n")
     if sudo_conf == "":
         subprocess.check_call(['sudo', "mv", fpath, fpath_in_trash])
     else:

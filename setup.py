@@ -5,11 +5,11 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="trashf",
-    version="1.0.0",
+    version="1.0.1",
     python_requires='>=3',
     author="yoarch",
     author_email="yo.managements@gmail.com",
-    description="universal file launcher for terminal",
+    description="CLI tool to safely remove any file and directory by putting them in the trash",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yoarch/trashf",

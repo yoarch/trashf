@@ -1,7 +1,7 @@
 # trashf
 CLI tool to safely remove any file and directory by putting them in the trash  
 
-Move any file or directory in the trash in a clever and safe way when wanting to remove them. If a file or folder with the same name already exist in the trash, the file or folder to be removed will be renamed with the date before to be moved to the trash (fname + "_%Y_%m_%d-%H_%M_%S").
+Move any file or directory in the trash in a clever and safe way when wanting to remove them. If a file or folder with the same name already exist in the trash, the file or folder to be removed will be renamed with the date before to be moved to the trash (fname + "%Y_%m_%d-%H_%M_%S").
 
 
 # installation
@@ -36,7 +36,7 @@ or
 rt --help
 ```
 
-move in the trash ($HOME/.local/share/Trash/files) files and folders:<br/>
+**move** in the trash ($HOME/.local/share/Trash/files) files and folders:<br/>
 ```sh
 trashf titi/ toto.jpg
 ```
