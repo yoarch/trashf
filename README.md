@@ -29,7 +29,7 @@ python >= 3
 
 
 # examples
-for **help**:<br/>
+For **help**:<br/>
 ```sh
 trashf -h
 or

@@ -7,6 +7,8 @@ from os import stat
 from pwd import getpwuid
 from datetime import datetime
 
+__author__ = 'Yann Orieult'
+
 CBRED = '\033[38;5;196;1m'
 CBORANGE = '\033[38;5;202;1m'
 CBGREEN = '\033[38;5;40;1m'
@@ -39,15 +41,11 @@ def check_help_request(args):
         exit()
 
 
-# def run(command):
-#     return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.readlines()
-
 def OK(msg=""):
     print(CBGREEN + "\n\t[OK] " + CBASE + msg)
 
 
 def INFO(msg=""):
-    # print(CBWHITE + "\n\t[INFO] " + CBASE, end='')
     print(CBWHITE + "\n\t[INFO] " + CBASE + msg)
 
 
@@ -84,7 +82,7 @@ def get_fname(fpath):
 def error_man(init_msg, err_msg, fpath, fpath_in_trash):
     ERROR(init_msg + " error:\n\t\t" + str(err_msg))
 
-    sudo_conf = input(CBWHITE + "\n\t\tuse sudo?\n\t\t\t[Enter] to proceed\t\t[any case] to skip\n")
+    sudo_conf = input(CBWHITE + "\n\t\tuse sudo?\n\t\t[Enter] to proceed\t\t[any case] to skip\n")
     if sudo_conf == "":
         subprocess.check_call(['sudo', "mv", fpath, fpath_in_trash])
     else:
@@ -103,9 +101,9 @@ def trashf(fpath):
         cdatetime = datetime.now()
         ctime = cdatetime.strftime("_%Y_%m_%d-%H_%M_%S")
         fpath_in_trash = fpath_in_trash + ctime
-        print("\t\trenaming " + CBBLUE + " %s " % fname + CBASE + "to " + CBBLUE + "%s " % (fname + ctime) + CBASE + "before moving to trash")
+        print("\t\trenaming " + CBBLUE + " %s " % fname + CBASE + "to " +
+              CBBLUE + "%s " % (fname + ctime) + CBASE + "before moving to trash")
 
-    # shutil.move(fpath, fpath_in_trash)
     moved = True
 
     try:
@@ -124,7 +122,8 @@ def trashf(fpath):
         if check_f_moved_to_trash(fpath, fpath_in_trash):
             OK(CBBLUE + "%s" % fpath + CBASE + " moved to trash" + CBASE)
         else:
-            print("an issue occurred when moving file " + CBBLUE + "%s" % fpath + CBASE + " to trash\n\tplease check the integrity of this file")
+            print("an issue occurred when moving file " + CBBLUE + "%s" % fpath + CBASE +
+                  " to trash\n\tplease check the integrity of this file")
 
 
 def check_f_moved_to_trash(fpath, fpath_in_trash):
@@ -144,7 +143,7 @@ def get_fowner(fpath):
 def main():
     input_fpaths = sys.argv[1:]
     check_help_request(input_fpaths)
-    fpaths = get_abs_path(input_fpaths)
+    fpaths = get_abs_paths(input_fpaths)
 
     for fpath in fpaths:
 
